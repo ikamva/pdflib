@@ -3,5 +3,41 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "@ikamva/pdfviewer": {
+      "projectType": "library",
+      "root": "projects/ikamva/pdfviewer",
+      "sourceRoot": "projects/ikamva/pdfviewer/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ikamva/pdfviewer/tsconfig.lib.json",
+            "project": "projects/ikamva/pdfviewer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ikamva/pdfviewer/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ikamva/pdfviewer/src/test.ts",
+            "tsConfig": "projects/ikamva/pdfviewer/tsconfig.spec.json",
+            "karmaConfig": "projects/ikamva/pdfviewer/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["projects/ikamva/pdfviewer/tsconfig.lib.json", "projects/ikamva/pdfviewer/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "@ikamva/pdfviewer"
 }
